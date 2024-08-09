@@ -1,0 +1,31 @@
+/* todo Tablet Devices */
+@media only screen and (min-width: 768px) and (max-width: 991px){
+        /* Home Section */
+        #home-section h1{
+            color: var(--primary-text);
+            font-size: 3.5rem;
+        }
+        /* File Input */
+        .file-input-label{
+            width: auto;
+        }
+    
+        /* Wrapper for inputs */
+        .wrapper {
+            max-width: 1000px;
+            margin: 30px auto;
+            width: 90%;
+            padding: 1rem;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px; /* Space between items */
+        }
+    
+        .image-group{
+            display: flex;
+            flex-direction: row;
+        }
+        .image-group h5{
+            text-align: center;
+        }
+}
