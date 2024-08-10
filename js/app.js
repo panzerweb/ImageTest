@@ -1,5 +1,9 @@
 console.log('Test Project');
 
+//* Enable Tooltips -- Bootstrap
+const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
+const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl));
+
 //* Global Variables
 const getInput = document.querySelectorAll('.wrapper input'); //The Entire Wrapper for inputs
 const spacingRange = document.getElementById('spacing-range');
@@ -10,6 +14,10 @@ const brightnessRange = document.getElementById('brightness-range');
 const brightnessOutput = document.getElementById('brightness-range-value');
 const contrastRange = document.getElementById('contrast-range');
 const contrastOutput = document.getElementById('contrast-range-value');
+const sepiaRange = document.getElementById('sepia-range');
+const sepiaOutput = document.getElementById('sepia-range-value');
+const grayScaleRange = document.getElementById('grayscale-range');
+const grayScaleOutput = document.getElementById('grayscale-range-value');
 const borderWidthRange = document.getElementById('border-width-range');
 const borderWidthOutput = document.getElementById('border-width-range-value');
 const resetButton = document.getElementById('reset-btn');
@@ -55,15 +63,26 @@ resetButton.addEventListener('click', function(){
     brightnessOutput.textContent = 100 + '%';
     contrastRange.value = 100;
     contrastOutput.textContent = 100 + '%';
+    sepiaRange.value = 0;
+    sepiaOutput.textContent = 0 + '%';
+    grayScaleRange.value = 0;
+    grayScaleOutput.textContent = 0 + '%';
     borderWidthRange.value = 0;
     borderWidthOutput.textContent = 0;
 
     const event = new Event('input');
+    spacingRange.dispatchEvent(event);
+    blurRange.dispatchEvent(event);
     brightnessRange.dispatchEvent(event);
+    contrastRange.dispatchEvent(event);
+    sepiaRange.dispatchEvent(event);
+    grayScaleRange.dispatchEvent(event);
+    borderWidthRange.dispatchEvent(event);
 })
 
 
 //* Manipulated Image Download
+
 //I literally have no idea about this code here but Thanks ChatGPT :)
 
 // Utility function to update the CSS styles of the image based on input values
@@ -73,13 +92,15 @@ function updateImageStyles() {
     const blur = document.getElementById('blur-range').value + 'px';
     const brightness = document.getElementById('brightness-range').value + '%';
     const contrast = document.getElementById('contrast-range').value + '%';
+    const sepia = document.getElementById('sepia-range');
+    const grayscale = document.getElementById('grayscale-range');
     const bgColor = document.getElementById('color-bg').value;
     const borderColor = document.getElementById('border-color').value;
     const borderWidth = document.getElementById('border-width-range').value + 'px';
 
 
     // Sets the image style with the properties given by the values from the input elements
-    img.style.filter = `blur(${blur}) brightness(${brightness}) contrast(${contrast})`;
+    img.style.filter = `blur(${blur}) brightness(${brightness}) contrast(${contrast}) sepia(${sepia}) grayscale(${grayscale})`;
     img.style.padding = spacing;
     img.style.backgroundColor = bgColor;
     img.style.borderColor = borderColor;
@@ -95,14 +116,14 @@ document.querySelectorAll('input').forEach(input => {
 
 //An Event Listener if the download button is click
 document.getElementById('download').addEventListener('click', function() {
-    //Get the device pixel ratio
-    const pixel_ratio = window.devicePixelRatio || 1;
 
     // Get image element and style values from input elements
     const spacing = parseInt(document.getElementById('spacing-range').value);
     const blur = document.getElementById('blur-range').value + 'px';
     const brightness = document.getElementById('brightness-range').value + '%';
     const contrast = document.getElementById('contrast-range').value + '%';
+    const sepia = document.getElementById('sepia-range').value + '%';
+    const grayscale = document.getElementById('grayscale-range').value + '%';
     const bgColor = document.getElementById('color-bg').value;
     const borderColor = document.getElementById('border-color').value;
     const borderWidth = parseInt(document.getElementById('border-width-range').value);
@@ -113,33 +134,23 @@ document.getElementById('download').addEventListener('click', function() {
     const ctx = canvas.getContext('2d');
 
     // Calculate canvas size considering spacing and border
-    const canvasWidth = canvas.width = img.naturalWidth + 2 * (spacing + borderWidth);
-    const canvasHeight = canvas.height = img.naturalHeight + 2 * (spacing + borderWidth);
+    canvas.width = img.naturalWidth + 2 * (spacing + borderWidth);
+    canvas.height = img.naturalHeight + 2 * (spacing + borderWidth);
 
-    //Set canvas size, scaled by device pixel ratio
-    canvas.width = canvasWidth * pixel_ratio;
-    canvas.height =  canvasHeight * pixel_ratio;
 
-    //Scale the drawing context of canvas
-    ctx.scale(pixel_ratio, pixel_ratio);
-    
     // Fill the canvas with the background color
     ctx.fillStyle = bgColor;
     ctx.fillRect(0, 0, canvas.width, canvas.height);
 
     // Set the canvas filter and draw the image with padding and border
-    ctx.filter = `blur(${blur}) brightness(${brightness}) contrast(${contrast})`;
+    ctx.filter = `blur(${blur}) brightness(${brightness}) contrast(${contrast}) sepia(${sepia}) grayscale(${grayscale})`;
     ctx.drawImage(img, spacing + borderWidth, spacing + borderWidth, img.naturalWidth, img.naturalHeight);
-
-
 
 
     // Draw the border
     if (borderWidth > 0) {
         ctx.lineWidth = borderWidth;
         ctx.strokeStyle = borderColor;
-
-        ctx.stroke();
         ctx.strokeRect(borderWidth / 2, borderWidth / 2, canvas.width - borderWidth, canvas.height - borderWidth);
     }
 

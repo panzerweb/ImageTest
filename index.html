@@ -9,6 +9,8 @@
     <!-- todo CSS and Bootstrap Links -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>  
     <link rel="stylesheet" href="./css/style.css">
     <link rel="stylesheet" href="./css/mobile.css">
     <link rel="stylesheet" href="./css/tablet.css">
@@ -67,32 +69,71 @@
 
             <div class="row justify-content-center align-items-center">
                 <div class="wrapper">
-                    
-                    <label for="spacing">Spacing</label>
+                    <!--?? Spacing -->
+                    <label for="spacing">
+                        <i class="bi bi-question-circle-fill mx-1" data-bs-toggle="tooltip" data-bs-title="Implements pixel-based padding on your image as spacing." data-bs-custom-class="custom-tooltip"></i> Spacing
+                    </label>
                     <input type="range" name="spacing" min="0" max="20" value="0" id="spacing-range" data-sizing="px">
                     <output id="spacing-range-value">0</output>
-            
-                    <label for="blur">Blur</label>
+
+                    <!-- ?? Blur -->
+                    <label for="blur">
+                        <i class="bi bi-question-circle-fill mx-1" data-bs-toggle="tooltip" data-bs-title="Gives Blur to your image (Pixel-Based)." data-bs-custom-class="custom-tooltip"></i>Blur
+                    </label>
                     <input type="range" name="blur" min="0" max="25" value="0" id="blur-range" data-sizing="px">
                     <output id="blur-range-value">0</output>
-            
-                    <label for="brightness">Brightness</label>
+
+                    <!--?? Brightness -->
+                    <label for="brightness">
+                        <i class="bi bi-question-circle-fill mx-1" data-bs-toggle="tooltip" data-bs-title="Adds Brightness to your image." data-bs-custom-class="custom-tooltip"></i>Brightness
+                    </label>
                     <input type="range" name="brightness" min="0" max="200" value="100" id="brightness-range" data-sizing="%">
                     <output id="brightness-range-value">100%</output>
-            
-                    <label for="contrast">Contrast</label>
+
+                    <!--?? Contrast -->
+                    <label for="contrast">
+                        <i class="bi bi-question-circle-fill mx-1" data-bs-toggle="tooltip" data-bs-title="Adds Contrast to your image." data-bs-custom-class="custom-tooltip"></i>
+                        Contrast
+                    </label>
                     <input type="range" name="contrast" min="0" max="200" value="100" id="contrast-range" data-sizing="%">
                     <output id="contrast-range-value">100%</output>
 
-                    <label for="border-width-range">Border Width</label> 
+                    <!--?? Sepia -->
+                    <label for="sepia">
+                        <i class="bi bi-question-circle-fill mx-1" data-bs-toggle="tooltip" data-bs-title="Converts the input image to sepia, giving it a warmer, more yellow/brown appearance." data-bs-custom-class="custom-tooltip"></i>
+                        Sepia
+                    </label>
+                    <input type="range" name="sepia" id="sepia-range" min="0" max="100" value="0" data-sizing="%">
+                    <output id="sepia-range-value">0%</output>
+
+                    <!--?? Grayscale -->
+                    <label for="grayscale">
+                        <i class="bi bi-question-circle-fill mx-1" data-bs-toggle="tooltip" data-bs-title="Converts the input image to grayscale, adding a gray filter to your image." data-bs-custom-class="custom-tooltip"></i>
+                        Grayscale
+                    </label>
+                    <input type="range" name="grayscale" id="grayscale-range" min="0" max="100" value="0" data-sizing="%">
+                    <output id="grayscale-range-value">0%</output>
+
+                     <!--?? Border Width -->
+                    <label for="border-width-range">
+                        <i class="bi bi-question-circle-fill mx-1" data-bs-toggle="tooltip" data-bs-title="Adds Border to your image (Pixel-Based)." data-bs-custom-class="custom-tooltip"></i>
+                        Border Width
+                    </label> 
                     <input type="range" name="border-width" min="0" max="20" value="0" id="border-width-range" data-sizing="px">
                     <output id="border-width-range-value">0</output>
 
+                    <!--?? Color Input Group -->
                     <div class="color-input-grid">
-                        <label for="base-color">Base Color</label>
+                        <label for="base-color">
+                            <i class="bi bi-question-circle-fill mx-1" data-bs-toggle="tooltip" data-bs-title="Provides background color to your image (Visible only if padding is specified)." data-bs-custom-class="custom-tooltip"></i>
+                            Base Color
+                        </label>
                         <input type="color" name="base" id="color-bg" value="#1fc01f">
                 
-                        <label for="border-color">Border Color</label>
+                        <label for="border-color">
+                            <i class="bi bi-question-circle-fill mx-1" data-bs-toggle="tooltip" data-bs-title="Provides Color to the Image's Border." data-bs-custom-class="custom-tooltip"></i>
+                            Border Color
+                        </label>
                         <input type="color" name="border-color" value="#000000" id="border-color">
                         <output id="border-color-value"></output>
 

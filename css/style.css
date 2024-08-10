@@ -14,6 +14,8 @@
     --border-style: solid;
     --border-color: #000000;
     --border-radius: 1px;
+    --sepia: 0;
+    --grayscale: 0;
 
 
 
@@ -108,7 +110,10 @@ body{
 .wrapper input[type="range"] + output {
     margin-left: 10px;
 }
-
+.wrapper i{
+    cursor: pointer;
+    color: var(--primary-color);
+}
 .color-input-grid{
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -117,6 +122,12 @@ body{
     align-items: center;
 }
 
+/* Custom Tooltip styling */
+.custom-tooltip {
+    --bs-tooltip-bg: var(--primary-color);
+    --bs-tooltip-color: var(--dark-highlight);
+    --bs-tooltip-font-size: 0.9rem;
+  }
 /* Custom File Input */
 /* Hide the actual file input */
 #image-upload {
@@ -179,13 +190,16 @@ body{
     object-fit: cover;
     margin: auto;
 }
+/* This element right here is the main image manipulation */
 .img-wrapper #output{
     width: 100%;
     height: auto;
     object-fit: cover;
     margin: auto;
     padding: var(--spacing);
-    filter: blur(var(--blur)) brightness(var(--brightness)) contrast(var(--contrast));
+    filter: blur(var(--blur, 0px)) brightness(var(--brightness, 100%)) contrast(var(--contrast, 100%)) sepia(var(--sepia, 100%)) grayscale(var(--grayscale));
+
+
     background-color: var(--base);
     border: var(--border-width) var(--border-style) var(--border-color);
     border-radius: var(--border-radius);
