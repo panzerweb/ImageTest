@@ -95,6 +95,8 @@ document.querySelectorAll('input').forEach(input => {
 
 //An Event Listener if the download button is click
 document.getElementById('download').addEventListener('click', function() {
+    //Get the device pixel ratio
+    const pixel_ratio = window.devicePixelRatio || 1;
 
     // Get image element and style values from input elements
     const spacing = parseInt(document.getElementById('spacing-range').value);
@@ -111,9 +113,16 @@ document.getElementById('download').addEventListener('click', function() {
     const ctx = canvas.getContext('2d');
 
     // Calculate canvas size considering spacing and border
-    canvas.width = img.naturalWidth + 2 * (spacing + borderWidth);
-    canvas.height = img.naturalHeight + 2 * (spacing + borderWidth);
+    const canvasWidth = canvas.width = img.naturalWidth + 2 * (spacing + borderWidth);
+    const canvasHeight = canvas.height = img.naturalHeight + 2 * (spacing + borderWidth);
 
+    //Set canvas size, scaled by device pixel ratio
+    canvas.width = canvasWidth * pixel_ratio;
+    canvas.height =  canvasHeight * pixel_ratio;
+
+    //Scale the drawing context of canvas
+    ctx.scale(pixel_ratio, pixel_ratio);
+    
     // Fill the canvas with the background color
     ctx.fillStyle = bgColor;
     ctx.fillRect(0, 0, canvas.width, canvas.height);
