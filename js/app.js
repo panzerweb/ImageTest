@@ -95,7 +95,7 @@ function updateImageStyles() {
     const sepia = document.getElementById('sepia-range');
     const grayscale = document.getElementById('grayscale-range');
     const bgColor = document.getElementById('color-bg').value;
-    const borderColor = document.getElementById('border-color').value;
+    const borderColor = document.getElementById('border').value;
     const borderWidth = document.getElementById('border-width-range').value + 'px';
 
 
@@ -125,7 +125,7 @@ document.getElementById('download').addEventListener('click', function() {
     const sepia = document.getElementById('sepia-range').value + '%';
     const grayscale = document.getElementById('grayscale-range').value + '%';
     const bgColor = document.getElementById('color-bg').value;
-    const borderColor = document.getElementById('border-color').value;
+    const borderColor = document.getElementById('border').value;
     const borderWidth = parseInt(document.getElementById('border-width-range').value);
 
 
